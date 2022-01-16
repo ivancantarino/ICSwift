@@ -19,28 +19,28 @@ import Foundation
 /// `when(_:perform:)` do not strongly capture `self`.
 public class NotificationObserver: NSObject {
     // MARK: - Typealiases
-
+    
     /// Signature for the block which callers can use to remove an existing
     /// observer during the NotificationObserver's lifetime.
     public typealias Unobserver = () -> Void
-
+    
     // MARK: - Private Properties
-
+    
     /// If `true`, and if `object` is `nil`, then the target object passed into
     /// the initializer is presumed to have been released (it is a weak ref).
     private let wasInitializedWithTargetObject: Bool
-
+    
     /// The target queue for all observation callbacks.
     private let queue: OperationQueue
-
+    
     /// The (optional) target object to be used when observing notifications.
     private weak var object: AnyObject?
-
+    
     /// A tote bag of observation tokens.
     private var tokens = [NSObjectProtocol]()
-
+    
     // MARK: - Init/Deinit
-
+    
     /// Designated initializer.
     ///
     /// - parameter object: Optional. A target object to use with observations.
@@ -52,13 +52,13 @@ public class NotificationObserver: NSObject {
         self.wasInitializedWithTargetObject = (object != nil)
         self.queue = queue
     }
-
+    
     deinit {
         tokens.forEach(NotificationCenter.default.removeObserver)
     }
-
+    
     // MARK: - Public Methods
-
+    
     /// Adds an observation for a given notification.
     ///
     /// This method's signature is designed for succinct clarity at the call
@@ -100,7 +100,7 @@ public class NotificationObserver: NSObject {
         }
         return unobserve
     }
-
+    
     /// An alternative to the above method which does not pass a reference to
     /// the notification in the block argument, which can spare you a `_ in`.
     @discardableResult

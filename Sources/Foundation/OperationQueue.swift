@@ -13,7 +13,7 @@ extension OperationQueue {
     public static var isMain: Bool {
         return OperationQueue.main.isCurrent
     }
-
+    
     /// Performs a block on the main queue as soon as possible without blocking
     /// execution on the current queue, if it isn't the main queue itself.
     ///
@@ -21,7 +21,7 @@ extension OperationQueue {
     public static func onMain(_ block: @escaping () -> Void) {
         OperationQueue.main.asap(block)
     }
-
+    
     /// Initializes and returns a new queue with a max concurrent operation
     /// count of 1.
     public static func serialQueue() -> OperationQueue {
@@ -29,12 +29,12 @@ extension OperationQueue {
         queue.maxConcurrentOperationCount = 1
         return queue
     }
-
+    
     /// - returns: Returns `true` if called from `queue`.
     public var isCurrent: Bool {
         return OperationQueue.current === self
     }
-
+    
     /// Performs a block on the receiver as soon as possible without blocking
     /// execution on the current queue, if it isn't the receiver itself.
     ///
@@ -46,7 +46,7 @@ extension OperationQueue {
             addOperation(block)
         }
     }
-
+    
     /// Adds an array of operations to the receiver.
     ///
     /// The operations added will be executed asynchronously, according to the
