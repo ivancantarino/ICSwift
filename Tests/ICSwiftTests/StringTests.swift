@@ -8,7 +8,6 @@
 import XCTest
 @testable import ICSwift
 
-
 /// UnitTests for the each `String` extension.
 final class StringTests: XCTestCase {
     private var sut: String = "hello world!"
