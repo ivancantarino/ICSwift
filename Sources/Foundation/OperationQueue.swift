@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  OperationQueue.swift
 //  
 //
 //  Created by Ivan Cantarino on 16/01/2022.
@@ -56,10 +56,11 @@ extension OperationQueue {
     public func add(_ operations: [Operation]) {
         addOperations(operations, waitUntilFinished: false)
     }
-
+    
+    /// Runs the Operation synchronously
+    /// - Parameter block: The block to run synchronously
     public func sync(_ block: @escaping () -> Void) {
         let operation = BlockOperation(block: block)
         addOperations([operation], waitUntilFinished: true)
     }
-
 }
