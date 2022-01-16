@@ -15,6 +15,8 @@ extension NotificationCenter {
     ///   - object: Object to be handled within the notitication
     ///   - userInfo: Aditional information to pass within the notification
     public static func post(_ name: Notification.Name, object: Any? = nil, userInfo: [AnyHashable: Any]? = nil) {
-            NotificationCenter.default.post(name: name, object: object, userInfo: userInfo)
+        NotificationCenter.default.post(name: name,
+                                        object: object,
+                                        userInfo: userInfo)
     }
 }
