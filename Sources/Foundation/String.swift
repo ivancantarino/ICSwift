@@ -8,26 +8,12 @@
 import Foundation
 
 public extension String {
+    /// Subscript: return the char at index
     subscript (i: Int) -> String {
         self[i ..< i + 1]
     }
     
-    /// Converts the given string to a substring staring
-    /// from the specified index
-    /// - Parameter fromIndex: The index to start the substring from
-    /// - Returns: Returns the final substring'ed version of `self`.
-    func substring(fromIndex: Int) -> String {
-        self[min(fromIndex, count) ..< count]
-    }
-    
-    /// Converts the given string to a substring up to
-    /// the given index.
-    /// - Parameter toIndex: The limit index to substring to
-    /// - Returns: Returns the final substring'ed version of `self`
-    func substring(toIndex: Int) -> String {
-        self[0 ..< max(0, toIndex)]
-    }
-
+    /// Subscript: returns a substring from the given range
     subscript (r: Range<Int>) -> String {
         let range = Range(uncheckedBounds: (lower: max(0, min(count, r.lowerBound)),
                                             upper: min(count, max(0, r.upperBound))))
@@ -35,12 +21,7 @@ public extension String {
         let end = index(start, offsetBy: range.upperBound - range.lowerBound)
         return String(self[start ..< end])
     }
-    
-    /// Returns the Character at the given index
-    func getCharAtIndex(_ index: Int) -> Character {
-        self[self.index(self.startIndex, offsetBy: index)]
-    }
-    
+        
     /// Capitalizes the first letter
     /// - Returns: Returns `self` with the first letter capitalized
     func capitalizingFirstLetter() -> String {
