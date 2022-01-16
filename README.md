@@ -11,8 +11,10 @@ Some extensions used within this package can be found in the etcetera repository
 
 ## Requirements
 
-iOS 11.0+ 
+iOS 11.0+
+
 Xcode 12.0+
+
 Swift 4.0+
 
 ## Notes to contributors
